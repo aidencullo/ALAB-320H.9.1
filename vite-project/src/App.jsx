@@ -13,6 +13,16 @@ function App() {
   const removeTodo = (index) => {
     setTodos(todos.filter((_, i) => i !== index));
   };
+
+  const updateTodo = (index, newTodo) => {
+    const newTodos = todos.map((todo, i) => {
+      if (i === index) {
+	return newTodo;
+      }
+      return todo;
+    });
+    setTodos(newTodos);
+  };
   
   return (
     <>
@@ -23,6 +33,7 @@ function App() {
       <TodoList
         todos={todos}
         removeTodo={removeTodo}
+        updateTodo={updateTodo}
       />
     </>
   );
