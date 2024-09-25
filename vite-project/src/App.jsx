@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 import AddTodo from './components/AddTodo'
+import TodoList from './components/TodoList'
 
 function App() {
   const [todos, setTodos] = useState([])
@@ -15,12 +16,9 @@ function App() {
       <AddTodo
         handleClick={handleClick}
       />
-
-      <ul>
-	{todos.map((todo, index) => (
-	  <li key={index}>{todo}</li>
-	))}
-      </ul>
+      <TodoList
+	todos={todos}
+      />
     </>
   )
 }
