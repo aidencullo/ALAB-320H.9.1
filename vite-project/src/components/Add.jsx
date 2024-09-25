@@ -3,8 +3,21 @@ import React, { useState } from "react";
 export default function Add({ addTodo }) {
   const [text, setText] = useState("");
 
+  const template = {
+    userId: 1,
+    id: Math.random() * 1000,
+    isCompleted: false,
+  };
+
   const handleClick = () => {
-    addTodo(text);
+    if (!text) {
+      alert("Please enter a todo");
+      return;
+    }
+    addTodo({
+      ...template,
+      title: text,
+    });
     setText("");
   };
   
