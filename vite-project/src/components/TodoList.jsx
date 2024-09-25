@@ -5,8 +5,7 @@ export default function TodoList({ todos, removeTodo, updateTodo }) {
     <div>
     {todos.map((todo, index) => (
       <div key={index}>
-        <Todo todo={todo} updateTodo={updateTodo} index={index} />
-        <button onClick={() => removeTodo(index)}>Remove</button>
+        <Todo todo={todo} updateTodo={updateTodo} index={index} removeTodo={removeTodo} />
       </div>
     ))}
     </div>

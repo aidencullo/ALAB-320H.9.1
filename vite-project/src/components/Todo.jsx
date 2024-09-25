@@ -1,26 +1,20 @@
 import { useState } from "react";
 
-import Edit from "./Edit";
+import EditInput from "./EditInput";
+import TodoContent from "./TodoContent";
 
-export default function Todo({ todo, index, updateTodo }) {
+export default function Todo({ todo, index, updateTodo, removeTodo }) {
   const [edit, setEdit] = useState(false);
-  const [text, setText] = useState(todo.text);
   
   return (
     <>
       { edit ? (
-        <>
-          <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
-          <button onClick={() => {
-	    updateTodo(index, text);
-	    setEdit(false);
-          }}>Save</button>
-          <button onClick={() => setEdit(false)}>Cancel</button>
-        </>
+        <EditInput index={index} updateTodo={updateTodo} setEdit={setEdit} />
       ) : (
         <>
-          <span>{todo}</span>
+          <TodoContent todo={todo} />
           <button onClick={() => setEdit(true)}>Edit</button>
+          <button onClick={() => removeTodo(index)}>Remove</button>
         </>
       )}
     </>
