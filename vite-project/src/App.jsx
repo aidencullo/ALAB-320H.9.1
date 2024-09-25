@@ -1,18 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-import Add from './components/Add'
-import TodoList from './components/TodoList'
+import Add from './components/Add';
+import TodoList from './components/TodoList';
 
 function App() {
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState([]);
 
   const addTodo = (todo) => {
-    setTodos([...todos, todo])
-  }
+    setTodos([...todos, todo]);
+  };
 
   const removeTodo = (index) => {
-    setTodos(todos.filter((_, i) => i !== index))
-  }
+    setTodos(todos.filter((_, i) => i !== index));
+  };
   
   return (
     <>
@@ -21,11 +21,11 @@ function App() {
         addTodo={addTodo}
       />
       <TodoList
-	todos={todos}
+        todos={todos}
         removeTodo={removeTodo}
       />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
