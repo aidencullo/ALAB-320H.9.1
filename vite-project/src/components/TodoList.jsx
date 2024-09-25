@@ -2,12 +2,16 @@ import Todo from './Todo';
 
 export default function TodoList({ todos, removeTodo, updateTodo }) {
   return (
-    <div>
-    {todos.map((todo, index) => (
-      <div key={index}>
-        <Todo todo={todo} updateTodo={updateTodo} index={index} removeTodo={removeTodo} />
-      </div>
-    ))}
-    </div>
+    <>
+      {todos.map((todo, index) => (
+        <Todo
+          key={index}
+          todo={todo}
+          index={index}
+          updateTodo={updateTodo}
+          removeTodo={removeTodo}
+        />
+      ))}
+    </>
   );
 }

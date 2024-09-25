@@ -1,21 +1,25 @@
 import { useState } from "react";
 
 import EditInput from "./EditInput";
-import TodoContent from "./TodoContent";
+import TodoComponent from "./TodoComponent";
 
 export default function Todo({ todo, index, updateTodo, removeTodo }) {
-  const [edit, setEdit] = useState(false);
+  const [isEditting, setIsEditting] = useState(false);
+
+  const handleEdit = () => {
+    setIsEditting(true);
+  };
+
+  const handleRemove = () => {
+    removeTodo(index);
+  };
   
   return (
     <>
-      { edit ? (
-        <EditInput index={index} updateTodo={updateTodo} setEdit={setEdit} />
+      { isEditting ? (
+        <EditInput index={index} updateTodo={updateTodo} setIsEditting={setIsEditting} todo={todo} />
       ) : (
-        <>
-          <TodoContent todo={todo} />
-          <button onClick={() => setEdit(true)}>Edit</button>
-          <button onClick={() => removeTodo(index)}>Remove</button>
-        </>
+        <TodoComponent todo={todo} handleEdit={handleEdit} handleRemove={handleRemove} />
       )}
     </>
   );
