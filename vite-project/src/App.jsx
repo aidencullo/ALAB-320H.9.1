@@ -1,23 +1,28 @@
 import React, { useState } from 'react'
 
-import Add from './components/AddTodo'
+import Add from './components/Add'
 import TodoList from './components/TodoList'
 
 function App() {
   const [todos, setTodos] = useState([])
 
-  const updateTodos = (todo) => {
+  const addTodo = (todo) => {
     setTodos([...todos, todo])
+  }
+
+  const removeTodo = (index) => {
+    setTodos(todos.filter((_, i) => i !== index))
   }
   
   return (
     <>
       <h1>Create Todo List</h1>
       <Add
-        updateTodos={updateTodos}
+        addTodo={addTodo}
       />
       <TodoList
 	todos={todos}
+        removeTodo={removeTodo}
       />
     </>
   )
