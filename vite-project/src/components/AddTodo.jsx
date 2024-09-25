@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-export default function Todo({ addTodo }) {
+export default function Add({ updateTodos }) {
   const [text, setText] = useState("");
 
   const handleClick = () => {
-    addTodo(text);
+    updateTodos(text);
     setText("");
   };
   
