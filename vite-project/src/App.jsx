@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+import AddTodo from './components/AddTodo'
+
 function App() {
   const [todos, setTodos] = useState([])
 
@@ -10,8 +12,9 @@ function App() {
   return (
     <>
       <h1>Create Todo List</h1>
-      <input type="text" placeholder="Enter your todo" />
-      <button onClick={handleClick}>Add Todo</button>
+      <AddTodo
+        handleClick={handleClick}
+      />
 
       <ul>
 	{todos.map((todo, index) => (
