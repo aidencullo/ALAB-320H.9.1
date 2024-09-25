@@ -14,10 +14,24 @@ export default function Todo({ todo, index, updateTodo, removeTodo }) {
     removeTodo(index);
   };
   
+  const handleSave = (text) => {
+    updateTodo(index, text);
+    setIsEditting(false);
+  };
+
+  const handleCancel = () => {
+    setIsEditting(false);
+  };
+  
   return (
     <>
       { isEditting ? (
-        <EditInput index={index} updateTodo={updateTodo} setIsEditting={setIsEditting} todo={todo} />
+        <EditInput
+          index={index}
+          todo={todo}
+          handleSave={handleSave}
+          handleCancel={handleCancel}
+        />
       ) : (
         <TodoComponent todo={todo} handleEdit={handleEdit} handleRemove={handleRemove} />
       )}
