@@ -1,7 +1,7 @@
 export default function TodoContent({ todo }) {
   return (
-    <>
-      {todo}
-    </>
+    <div>
+      {todo.title}
+    </div>
   );
 }

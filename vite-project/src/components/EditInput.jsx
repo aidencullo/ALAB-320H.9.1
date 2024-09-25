@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 
 export default function EditInput({ index, handleSave, handleCancel, todo }) {
-  const [text, setText] = useState(todo);
+  const [title, setTitle] = useState(todo.title);
 
-  const handleTextChange = (e) => {
-    setText(e.target.value);
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const handleSaveTitle = () => {
+    handleSave(title);
   };
 
   return (
-    <>
-      <input type="text" value={text} onChange={handleTextChange} />
-      <button onClick={() => handleSave(text)}>Save</button>
+    <div>
+      <input type="title" value={title} onChange={handleTitleChange} />
+      <button onClick={handleSaveTitle}>Save</button>
       <button onClick={handleCancel}>Cancel</button>
-    </>
+    </div>
   );
 }

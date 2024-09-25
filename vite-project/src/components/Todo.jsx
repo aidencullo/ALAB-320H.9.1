@@ -14,8 +14,8 @@ export default function Todo({ todo, index, updateTodo, removeTodo }) {
     removeTodo(index);
   };
   
-  const handleSave = (text) => {
-    updateTodo(index, text);
+  const handleSave = (title) => {
+    updateTodo(index, { ...todo, title });
     setIsEditting(false);
   };
 
@@ -25,16 +25,17 @@ export default function Todo({ todo, index, updateTodo, removeTodo }) {
   
   return (
     <>
-      { isEditting ? (
-        <EditInput
-          index={index}
-          todo={todo}
-          handleSave={handleSave}
-          handleCancel={handleCancel}
-        />
-      ) : (
-        <TodoComponent todo={todo} handleEdit={handleEdit} handleRemove={handleRemove} />
-      )}
+      { isEditting ? <EditInput
+                       index={index}
+                       todo={todo}
+                       handleSave={handleSave}
+                       handleCancel={handleCancel}
+                     /> : <TodoComponent
+                            todo={todo}
+                            handleEdit={handleEdit}
+                            handleRemove={handleRemove}
+                          />
+      }
     </>
   );
 }
