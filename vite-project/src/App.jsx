@@ -7,7 +7,7 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   const addTodo = (todo) => {
-    setTodos([...todos, todo]);
+    setTodos([todo, ...todos]);
   };
 
   const removeTodo = (index) => {
